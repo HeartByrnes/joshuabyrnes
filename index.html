@@ -391,22 +391,35 @@
       aspect-ratio: 16/9;
       background: var(--bg3);
       display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       font-size: 2.5rem;
       border-bottom: 1px solid var(--border);
       position: relative;
       overflow: hidden;
     }
     .project-thumb-label {
-      position: absolute; top: 12px; right: 12px;
-      font-size: 0.7rem;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 50px;
-      background: rgba(200,240,96,0.15);
-      border: 1px solid rgba(200,240,96,0.35);
+      background: rgba(13, 13, 15, 0.3);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--accent);
       color: var(--accent);
+    }
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
     .project-title { font-size: 1.05rem; font-weight: 500; }
@@ -672,9 +685,17 @@
           I'm a creative learning design specialist from Sydney, Australia — I build innovative, engaging experiences that keep learners locked in.
         </p>
         <div class="hero-btns fade-up delay-4">
-          <a href="#projects" class="btn btn-primary">View my work</a>
-          <a href="Joshua-Byrnes_Capability-Statement.pdf" class="btn btn-outline" download>Capability Statement</a>
-          <a href="Joshua-Byrnes_Résumé.pdf" class="btn btn-outline" download>Résumé</a>
+          <a href="#projects" class="btn btn-primary">My work</a>
+          <a href="Joshua-Byrnes_Capability-Statement.pdf" class="btn btn-outline" download>Statement<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg></a>
+          <a href="Joshua-Byrnes_Résumé.pdf" class="btn btn-outline" download>Résumé<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg></a>
         </div>
       </div>
 
@@ -700,10 +721,10 @@
       <div class="about-grid">
         <div class="reveal">
           <span class="tag">About me</span>
-          <h2 class="section-title">Educational innovation through<br><em>engaging experiences</em></h2>
+          <h2 class="section-title">Educational innovation through <em>engaging experiences</em></h2>
           <div class="about-body">
             <p>
-              I'm a creative <strong>content designer/developer</strong> based in the Blue Mountainsm and I'm looking for career opportunities.
+              I'm a creative <strong>content designer/developer</strong> based in the Blue Mountains and I'm looking for career opportunities.
             </p>
             <p>
               My education and career have spanned multiple creative and technical disciplines, but my current role at Western Sydney University has led me to my primary interest: <strong>building innovative and engaging online learning experiences</strong>. I've led a number of complex, collaborative, and multidisciplinary projects from inception to completion, and I'm keen to take the next step.
@@ -720,16 +741,16 @@
             <span class="detail-val">Sydney, NSW, Australia</span>
           </div>
           <div class="detail-row">
-            <span class="detail-key">Email</span>
-            <span class="detail-val">heartbyrnes@gmail.com</span>
-          </div>
-          <div class="detail-row">
             <span class="detail-key">Experience</span>
             <span class="detail-val">15+ years</span>
           </div>
           <div class="detail-row">
             <span class="detail-key">Availability</span>
             <span class="detail-val" style="color: var(--accent);">Open to opportunities</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-key">Email</span>
+            <span class="detail-val"><a href="mailto:heartbyrnes@gmail.com" style="color: var(--accent);">heartbyrnes@gmail.com</a></span>
           </div>
           <div class="detail-row">
             <span class="detail-key">Education</span>
@@ -811,6 +832,8 @@
           <div class="skill-desc">Immersive experiences that transport your audience to another place.</div>
           <div class="skill-pills">
             <span class="skill-pill">Matterport</span>
+            <span class="skill-pill">Polycam</span>
+            <span class="skill-pill">Scaniverse</span>
             <span class="skill-pill">3DVista</span>
             <span class="skill-pill">Unity</span>
             <span class="skill-pill">Godot</span>
@@ -828,7 +851,7 @@
           <span class="tag">The work I've done</span>
           <h2 class="section-title">Projects</h2>
         </div>
-        <a href="https://www.youtube.com/@yngbld_" target="_blank" rel="noopener" class="btn btn-outline">View more on YouTube</a>
+        <a href="https://www.youtube.com/@joshua.byrnes" target="_blank" rel="noopener" class="btn btn-outline">View more on YouTube</a>
       </div>
 
       <div class="projects-grid">
@@ -864,7 +887,7 @@
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb">📊<span class="project-thumb-label">Animation</span></div>
+          <div class="project-thumb"><img src="project_construction-program-promo.jpg"><span class="project-thumb-label">Animation</span></div>
           <div class="project-body">
             <div class="project-title">Construction Program Promo</div>
             <div class="project-desc">Real-time analytics platform with interactive charts, custom report builder, and automated email digests for small business owners.</div>
@@ -875,10 +898,6 @@
           </div>
           <div class="project-foot">
             <div class="project-links">
-              <a href="#" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Live demo
-              </a>
               <a href="https://youtube.com/playlist?list=PL6BTSdjlzerYcctHxtbK9_cNOxoKhKqwC&si=jeUcQ8MJ6mRxSF5V" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
@@ -893,10 +912,10 @@
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb">🤖<span class="project-thumb-label">360</span></div>
+          <div class="project-thumb"><img src="project_understanding-disability.jpg"><span class="project-thumb-label">360</span></div>
           <div class="project-body">
             <div class="project-title">Understanding Disability</div>
-            <div class="project-desc">Browser-based immersive experience about historical treatment of disability in early colonial Australia.</div>
+            <div class="project-desc">Browser-based immersive virtual tour of the historic female orphan school, exploring the treatment of disability in early colonial Australia.</div>
             <div class="project-stack">
               <span class="proj-pill">Photographer</span>
               <span class="proj-pill">Developer</span>
@@ -908,24 +927,15 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live demo
               </a>
-              <a href="#" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
-                  <line x1="19" y1="8" x2="24" y2="8"/>
-                  <line x1="19" y1="12" x2="24" y2="12"/>
-                  <line x1="19" y1="16" x2="24" y2="16"/>
-                </svg>
-                Video playlist
-              </a>
             </div>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb"><img src="project_video-production-fundamentals.jpg"><span class="project-thumb-label">Short Course</span></div>
+          <div class="project-thumb"><img src="project_360-fundamentals.jpg"><span class="project-thumb-label">Short Course</span></div>
           <div class="project-body">
             <div class="project-title">360 Fundamentals</div>
-            <div class="project-desc">Short course for academics and educators who wish to incorporate immersive technology into their teaching practice.</div>
+            <div class="project-desc">Short course for academics and educators who wish to incorporate immersive technology into their online teaching practice.</div>
             <div class="project-stack">
               <span class="proj-pill">Writer</span>
               <span class="proj-pill">Director</span>
@@ -934,11 +944,11 @@
           </div>
           <div class="project-foot">
             <div class="project-links">
-              <a href="https://westernx.edu.au/courses/video-production-fundamentals/?cl=1&redirectTo=https%3A%2F%2Fwesternx.edu.au%2Fcourses%2Fvideo-production-fundamentals%2Fhomepage%2F%3Fcl%3D1" class="project-link">
+              <a href="https://westernx.edu.au/courses/360-fundamentals/homepage/?cl=1" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live demo
               </a>
-              <a href="https://youtube.com/playlist?list=PL6BTSdjlzerZTLhmFUzT6cvDsYa3qwvBK&si=UvYIDyuzD86X1KsH" class="project-link">
+              <a href="https://youtube.com/playlist?list=PL6BTSdjlzerbro8RcvH8K3-u_dCKSJmfA&si=azrW95SCH7rvN8kl" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
                   <line x1="19" y1="8" x2="24" y2="8"/>
@@ -952,10 +962,10 @@
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb">📊<span class="project-thumb-label">VR</span></div>
+          <div class="project-thumb"><img src="project_virtual-height-safety.jpg"><span class="project-thumb-label">VR</span></div>
           <div class="project-body">
             <div class="project-title">Virtual Height Safety</div>
-            <div class="project-desc">Immersive, interactive VR experience designed to orient students in building site safety.</div>
+            <div class="project-desc">Immersive, interactive VR experience designed to orient students in building site safety and PPE without exposing them to real risk.</div>
             <div class="project-stack">
               <span class="proj-pill">Developer</span>
               <span class="proj-pill">Artist</span>
@@ -967,24 +977,15 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live demo
               </a>
-              <a href="https://youtube.com/playlist?list=PL6BTSdjlzerYcctHxtbK9_cNOxoKhKqwC&si=jeUcQ8MJ6mRxSF5V" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
-                  <line x1="19" y1="8" x2="24" y2="8"/>
-                  <line x1="19" y1="12" x2="24" y2="12"/>
-                  <line x1="19" y1="16" x2="24" y2="16"/>
-                </svg>
-                Video playlist
-              </a>
             </div>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb">🤖<span class="project-thumb-label">Video</span></div>
+          <div class="project-thumb"><img src="project_dfat-fellowship-project.jpg"><span class="project-thumb-label">Video</span></div>
           <div class="project-body">
             <div class="project-title">DFAT Fellowship Project</div>
-            <div class="project-desc">Interview series capturing reflections from a group of international academic fellows visiting Australia.</div>
+            <div class="project-desc">Interview series capturing personal reflections from a group of international academic fellows visiting Australia for a journalism exchange program.</div>
             <div class="project-stack">
               <span class="proj-pill">Director</span>
               <span class="proj-pill">Editor</span>
@@ -992,28 +993,24 @@
           </div>
           <div class="project-foot">
             <div class="project-links">
-              <a href="https://cenariovr.com/app/#/view/od2?zfile=live.zip&id=31574" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Live demo
-              </a>
-              <a href="#" class="project-link">
+              <a href="https://youtu.be/MC5UIXq8v3s?si=VclutJBdhbkeGXy9" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
                   <line x1="19" y1="8" x2="24" y2="8"/>
                   <line x1="19" y1="12" x2="24" y2="12"/>
                   <line x1="19" y1="16" x2="24" y2="16"/>
                 </svg>
-                Video playlist
+                Video
               </a>
             </div>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb"><img src="project_video-production-fundamentals.jpg"><span class="project-thumb-label">Animation</span></div>
+          <div class="project-thumb"><img src="project_learn2learn.jpg"><span class="project-thumb-label">Animation</span></div>
           <div class="project-body">
             <div class="project-title">Learn2Learn Intro</div>
-            <div class="project-desc">Promotional piece for a self-paced course aimed at orienting new students in their studies.</div>
+            <div class="project-desc">Promotional piece for Western Sydney University's self-paced course aimed at orienting new students and teaching them self-regulated study skills.</div>
             <div class="project-stack">
               <span class="proj-pill">Writer</span>
               <span class="proj-pill">Animator</span>
@@ -1021,40 +1018,31 @@
           </div>
           <div class="project-foot">
             <div class="project-links">
-              <a href="https://westernx.edu.au/courses/video-production-fundamentals/?cl=1&redirectTo=https%3A%2F%2Fwesternx.edu.au%2Fcourses%2Fvideo-production-fundamentals%2Fhomepage%2F%3Fcl%3D1" class="project-link">
+              <a href="https://l2l.westernsydney.edu.au/" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live demo
-              </a>
-              <a href="https://youtube.com/playlist?list=PL6BTSdjlzerZTLhmFUzT6cvDsYa3qwvBK&si=UvYIDyuzD86X1KsH" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
-                  <line x1="19" y1="8" x2="24" y2="8"/>
-                  <line x1="19" y1="12" x2="24" y2="12"/>
-                  <line x1="19" y1="16" x2="24" y2="16"/>
-                </svg>
-                Video playlist
               </a>
             </div>
           </div>
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb">📊<span class="project-thumb-label">Game</span></div>
+          <div class="project-thumb"><img src="project_settling-softly.jpg"><span class="project-thumb-label">Video Series</span></div>
           <div class="project-body">
-            <div class="project-title">Virtual Lab</div>
-            <div class="project-desc">Browser-based interactive materials lab for engineering students, to supplement their in-class activities.</div>
+            <div class="project-title">Settling Softly</div>
+            <div class="project-desc">Knowledge translation and early learning support resources for newly arrived refugees, featuring Costa Georgiadis from "Gardening Australia".</div>
             <div class="project-stack">
-              <span class="proj-pill">Developer</span>
-              <span class="proj-pill">Artist</span>
+              <span class="proj-pill">Videographer</span>
+              <span class="proj-pill">Animator</span>
             </div>
           </div>
           <div class="project-foot">
             <div class="project-links">
-              <a href="#" class="project-link">
+              <a href="https://researchers.westernsydney.edu.au/en/publications/knowledge-translation-to-support-early-learning-of-refugee-childr-4/" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Live demo
+                Citation
               </a>
-              <a href="https://youtube.com/playlist?list=PL6BTSdjlzerYcctHxtbK9_cNOxoKhKqwC&si=jeUcQ8MJ6mRxSF5V" class="project-link">
+              <a href="https://youtube.com/playlist?list=PL6BTSdjlzerYvoFGz2AYV8q-RuQxW_WnG&si=4d4OGU2wt4P-nVdh" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
                   <line x1="19" y1="8" x2="24" y2="8"/>
@@ -1068,10 +1056,10 @@
         </div>
 
         <div class="project-card reveal">
-          <div class="project-thumb">🤖<span class="project-thumb-label">TV</span></div>
+          <div class="project-thumb"><img src="project_virtual-lab.jpg"><span class="project-thumb-label">Game</span></div>
           <div class="project-body">
-            <div class="project-title">Caruso's Advertisements</div>
-            <div class="project-desc">Series of TV commercials produced for Caruso's Natural Health complementary medicines.</div>
+            <div class="project-title">Virtual Lab</div>
+            <div class="project-desc">Browser-based interactive first person experience designed to supplement engineering students' in-class material testing activities.</div>
             <div class="project-stack">
               <span class="proj-pill">Director</span>
               <span class="proj-pill">Animator</span>
@@ -1080,18 +1068,9 @@
           </div>
           <div class="project-foot">
             <div class="project-links">
-              <a href="https://cenariovr.com/app/#/view/od2?zfile=live.zip&id=31574" class="project-link">
+              <a href="https://teaching.westernsydney.edu.au/unity/virtual-lab/" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live demo
-              </a>
-              <a href="#" class="project-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
-                  <line x1="19" y1="8" x2="24" y2="8"/>
-                  <line x1="19" y1="12" x2="24" y2="12"/>
-                  <line x1="19" y1="16" x2="24" y2="16"/>
-                </svg>
-                Video playlist
               </a>
             </div>
           </div>
@@ -1199,22 +1178,38 @@
       <div class="contact-inner">
         <div class="reveal">
           <span class="tag">Get in touch</span>
-          <h2 class="section-title">Let's work<br><em>together</em></h2>
+          <h2 class="section-title">Let's work <em>together</em></h2>
           <p class="section-sub">
-            Whether you have a project in mind or just want to say hello — my inbox is always open.
+            Whether you have a project in mind or just want to find out more about me, drop a line.
           </p>
           <div class="contact-links">
             <a href="mailto:heartbyrnes@gmail.com" class="contact-link">
-              <div class="contact-link-icon">✉️</div>
+              <div class="contact-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="var(--accent)">
+                  <path d="M22.4,32h-6.4c-2.16,0-4.25-.42-6.23-1.26-1.91-.81-3.62-1.96-5.09-3.43-1.47-1.47-2.62-3.18-3.43-5.09-.83-1.97-1.26-4.07-1.26-6.23s.42-4.25,1.26-6.23c.81-1.91,1.96-3.62,3.43-5.09,1.47-1.47,3.18-2.62,5.09-3.43,1.97-.83,4.07-1.26,6.23-1.26s4.25.42,6.23,1.26c1.91.81,3.62,1.96,5.09,3.43,1.47,1.47,2.62,3.18,3.43,5.09.83,1.97,1.26,4.07,1.26,6.23v2.4c0,3.09-2.51,5.6-5.6,5.6-1.92,0-3.63-.98-4.63-2.46-1.46,1.52-3.5,2.46-5.77,2.46-4.41,0-8-3.59-8-8s3.59-8,8-8,8,3.59,8,8v2.4c0,1.32,1.08,2.4,2.4,2.4s2.4-1.08,2.4-2.4v-2.4c0-3.42-1.33-6.63-3.75-9.05-2.42-2.42-5.63-3.75-9.05-3.75s-6.63,1.33-9.05,3.75c-2.42,2.42-3.75,5.63-3.75,9.05s1.33,6.63,3.75,9.05c2.42,2.42,5.63,3.75,9.05,3.75h6.4c.88,0,1.6.72,1.6,1.6s-.72,1.6-1.6,1.6ZM16,11.2c-2.65,0-4.8,2.15-4.8,4.8s2.15,4.8,4.8,4.8,4.8-2.15,4.8-4.8-2.15-4.8-4.8-4.8Z"/>
+                </svg></div>
               <div>
                 <span class="contact-link-label">Email</span>
                 <span class="contact-link-value">heartbyrnes@gmail.com</span>
               </div>
             </a>
             <a href="https://www.linkedin.com/in/joshua-byrnes-593125405/" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon">💼</div>
+              <div class="contact-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="var(--accent)">
+                  <path d="M28.44,0H3.56C1.59,0,0,1.59,0,3.56v24.89c0,1.96,1.59,3.56,3.56,3.56h24.89c1.96,0,3.56-1.59,3.56-3.56V3.56c0-1.96-1.59-3.56-3.56-3.56ZM9.68,27.56h-4.77v-15.41h4.77v15.41ZM7.27,10.13c-1.56,0-2.82-1.27-2.82-2.84s1.26-2.84,2.82-2.84,2.82,1.27,2.82,2.84-1.26,2.84-2.82,2.84ZM27.56,27.56h-4.75v-8.09c0-2.22-.84-3.46-2.6-3.46-1.91,0-2.91,1.29-2.91,3.46v8.09h-4.58v-15.41h4.58v2.08s1.38-2.55,4.65-2.55,5.61,2,5.61,6.12v9.76Z"/>
+              </div>
               <div>
                 <span class="contact-link-label">LinkedIn</span>
+                <span class="contact-link-value">Joshua Byrnes | Educational Technologist</span>
+              </div>
+            </a>
+            <a href="https://au.seek.com/profiles/joshua-byrnes-FTd26Mcr18" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="var(--accent)">
+                  <path d="M16,32C7.15,32,0,24.85,0,16S7.15,0,16,0s16,7.15,16,16-7.15,16-16,16h0ZM3.57,19.55c0-.14-.11-.25-.25-.25s-.25.11-.25.25.11.25.25.25.25-.11.25-.25ZM3.57,16.19c0-.14-.11-.25-.25-.25s-.25.11-.25.25.11.25.25.25.25-.11.25-.25ZM3.57,12.83c0-.14-.11-.25-.25-.25s-.25.11-.25.25.11.25.25.25.25-.11.25-.25ZM5.42,19.55c0-.21-.17-.38-.38-.38s-.38.17-.38.38.17.38.38.38.38-.17.38-.38ZM5.42,16.19c0-.21-.17-.38-.38-.38s-.38.17-.38.38.17.38.38.38.38-.17.38-.38ZM5.42,12.83c0-.21-.17-.38-.38-.38s-.38.17-.38.38.17.38.38.38.38-.17.38-.38ZM7.57,19.55c0-.28-.22-.5-.5-.5s-.5.22-.5.5.22.5.5.5.5-.22.5-.5ZM7.57,16.19c0-.28-.22-.5-.5-.5s-.5.22-.5.5.22.5.5.5.5-.22.5-.5ZM7.57,12.83c0-.28-.22-.5-.5-.5s-.5.22-.5.5.22.5.5.5.5-.22.5-.5ZM9.81,19.55c0-.35-.28-.62-.62-.62s-.62.28-.62.62.28.63.62.63.62-.28.62-.63ZM9.81,16.19c0-.35-.28-.62-.62-.62s-.62.28-.62.62.28.63.62.63.62-.28.62-.63ZM9.81,12.83c0-.35-.28-.63-.62-.63s-.62.28-.62.63.28.63.62.63.62-.28.62-.63ZM12.43,19.55c0-.42-.34-.75-.75-.75s-.75.34-.75.75.34.75.75.75.75-.34.75-.75ZM12.43,16.19c0-.41-.34-.75-.75-.75s-.75.34-.75.75.34.75.75.75.75-.34.75-.75ZM12.43,12.83c0-.42-.34-.75-.75-.75s-.75.34-.75.75.34.75.75.75.75-.34.75-.75ZM15.16,19.55c0-.48-.39-.87-.88-.87s-.88.39-.88.87.39.87.88.87.88-.39.88-.87ZM15.16,16.19c0-.48-.39-.87-.88-.87s-.88.39-.88.87.39.87.88.87.88-.39.88-.87ZM15.16,12.83c0-.48-.39-.87-.88-.87s-.88.39-.88.87.39.87.88.87.88-.39.88-.87ZM18.38,26.28c0-.55-.45-1-1-1s-1,.45-1,1,.45,1,1,1,1-.45,1-1ZM18.38,22.91c0-.55-.45-1-1-1s-1,.45-1,1,.45,1,1,1,1-.45,1-1ZM18.38,19.55c0-.55-.45-1-1-1s-1,.45-1,1,.45,1,1,1,1-.45,1-1ZM18.38,16.19c0-.55-.45-1-1-1s-1,.45-1,1,.45,1,1,1,1-.45,1-1ZM18.38,12.83c0-.55-.45-1-1-1s-1,.45-1,1,.45,1,1,1,1-.45,1-1ZM18.38,9.47c0-.55-.45-1-1-1s-1,.45-1,1,.45,1,1,1,1-.45,1-1ZM18.38,6.1c0-.55-.45-1-1-1s-1,.45-1,1,.45,1,1,1,1-.45,1-1ZM21.7,22.91c0-.61-.49-1.1-1.1-1.1s-1.1.49-1.1,1.1.49,1.1,1.1,1.1,1.1-.49,1.1-1.1ZM21.7,19.55c0-.61-.49-1.1-1.1-1.1s-1.1.49-1.1,1.1.49,1.1,1.1,1.1,1.1-.49,1.1-1.1ZM21.7,16.19c0-.61-.49-1.1-1.1-1.1s-1.1.49-1.1,1.1.49,1.1,1.1,1.1,1.1-.49,1.1-1.1ZM21.7,12.83c0-.61-.49-1.1-1.1-1.1s-1.1.49-1.1,1.1.49,1.1,1.1,1.1,1.1-.49,1.1-1.1ZM21.7,9.46c0-.61-.49-1.1-1.1-1.1s-1.1.49-1.1,1.1.49,1.1,1.1,1.1,1.1-.49,1.1-1.1h0ZM25.28,19.56c0-.68-.55-1.24-1.24-1.24s-1.24.55-1.24,1.24.55,1.24,1.24,1.24,1.24-.55,1.24-1.24h0ZM25.28,16.2c0-.69-.55-1.24-1.24-1.24s-1.24.55-1.24,1.24.55,1.24,1.24,1.24,1.24-.55,1.24-1.24ZM25.28,12.84c0-.69-.55-1.24-1.24-1.24s-1.24.55-1.24,1.24.55,1.24,1.24,1.24,1.24-.55,1.24-1.24ZM28.91,16.22c0-.75-.61-1.36-1.36-1.36s-1.36.61-1.36,1.36.61,1.36,1.36,1.36,1.36-.61,1.36-1.36Z"/>
+              </div>
+              <div>
+                <span class="contact-link-label">Seek</span>
                 <span class="contact-link-value">Joshua Byrnes | Educational Technologist</span>
               </div>
             </a>
@@ -1222,21 +1217,21 @@
         </div>
 
         <div class="reveal">
-          <!-- Note: GitHub Pages is static — this form won't send without a service.
-               Free options: Formspree (formspree.io) or Web3Forms (web3forms.com).
-               Replace the action URL below with your Formspree/Web3Forms endpoint. -->
           <form class="contact-form" id="contactForm">
+            <input type="hidden" name="access_key" value="365cf5aa-d6a6-4973-bb84-a075d3cdec31">
+            <input type="hidden" name="subject" value="Website enquiry">
+            <input type="checkbox" name="botcheck" style="display:none">
             <div class="form-group">
               <label class="form-label" for="name">Name</label>
-              <input class="form-input" type="text" id="name" placeholder="Alex Smith" required />
+              <input class="form-input" type="text" id="name" name="name" placeholder="Alex Smith" required />
             </div>
             <div class="form-group">
               <label class="form-label" for="email">Email</label>
-              <input class="form-input" type="email" id="email" placeholder="alex@example.com" required />
+              <input class="form-input" type="email" id="email" name="email" placeholder="alex@example.com" required />
             </div>
             <div class="form-group">
               <label class="form-label" for="message">Message</label>
-              <textarea class="form-textarea" id="message" placeholder="Tell me about your project…" required></textarea>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Tell me about your project..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send message</button>
             <p id="formMsg" style="font-size: 0.85rem; color: var(--accent); text-align: center; min-height: 1.2rem;"></p>
@@ -1251,6 +1246,7 @@
     <p>© Joshua Byrnes.</p>
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/joshua-byrnes-593125405/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://au.seek.com/profiles/joshua-byrnes-FTd26Mcr18" target="_blank" rel="noopener">Seek</a>
       <a href="mailto:heartbyrnes@gmail.com">Email</a>
     </div>
   </footer>
@@ -1350,13 +1346,33 @@
       });
     });
 
-    // ── Contact form (static demo — connect to Formspree for real email) ──
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // ── Contact form ──
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const msg = document.getElementById('formMsg');
-      msg.textContent = 'Thanks! I\'ll be in touch soon.';
-      this.reset();
-      setTimeout(() => { msg.textContent = ''; }, 5000);
+      const m = document.getElementById('formMsg');
+      m.textContent = 'Sending…';
+
+      const formData = new FormData(this);
+      const json     = JSON.stringify(Object.fromEntries(formData));
+
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    json
+        });
+        const data = await res.json();
+        if (data.success) {
+          m.textContent = "Thanks — I'll be in touch soon.";
+          this.reset();
+        } else {
+          m.textContent = 'Something went wrong. Please try emailing me directly.';
+        }
+      } catch {
+        m.textContent = 'Something went wrong. Please try emailing me directly.';
+      }
+
+      setTimeout(() => { m.textContent = ''; }, 6000);
     });
   </script>
 </body>
