@@ -1439,7 +1439,7 @@
       const update = () => btn.classList.toggle('visible', window.scrollY > SHOW_AFTER);
       window.addEventListener('scroll', update, { passive: true });
       update();
-      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      btn.addEventListener('click', () => window.scrollTo(0, 0));
     })();
 
     // ── Email: assembled in the browser, only after genuine user interaction ──
