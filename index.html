@@ -11,6 +11,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
+  <script>
+    // Apply saved theme before first paint (default is dark)
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,10 +30,35 @@
       --muted:     #888890;
       --accent:    #c8f060;
       --border:    rgba(255,255,255,0.08);
+      --accent-rgb:   200,240,96;
+      --on-accent:    #0d0d0f;
+      --nav-bg:       rgba(13,13,15,0.8);
+      --hover-border: rgba(255,255,255,0.25);
+      --shine:        rgba(255,255,255,0.07);
+      --glow-opacity: 0.06;
+      color-scheme: dark;
       --serif:     'DM Serif Display', Georgia, serif;
       --sans:      'DM Sans', system-ui, sans-serif;
       --radius:    12px;
       --max:       1100px;
+    }
+
+    /* ── Light theme (toggled via data-theme on <html>) ── */
+    :root[data-theme="light"] {
+      --bg:           #f5f3ee;
+      --bg2:          #fbfaf7;
+      --bg3:          #e8e5dd;
+      --text:         #1a1a1d;
+      --muted:        #66666e;
+      --accent:       #4d6e00;
+      --accent-rgb:   77,110,0;
+      --on-accent:    #f5f3ee;
+      --border:       rgba(0,0,0,0.1);
+      --nav-bg:       rgba(245,243,238,0.82);
+      --hover-border: rgba(0,0,0,0.25);
+      --shine:        rgba(77,110,0,0.07);
+      --glow-opacity: 0.1;
+      color-scheme: light;
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -45,7 +78,7 @@
     ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
 
     /* ── Selection ── */
-    ::selection { background: var(--accent); color: #0d0d0f; }
+    ::selection { background: var(--accent); color: var(--on-accent); }
 
     /* ── Utilities ── */
     .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
@@ -56,7 +89,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
-      border: 1px solid rgba(200, 240, 96, 0.35);
+      border: 1px solid rgba(var(--accent-rgb),0.35);
       border-radius: 50px;
       padding: 3px 12px;
       margin-bottom: 1.2rem;
@@ -84,7 +117,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(13,13,15,0.8);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -109,13 +142,13 @@
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
       background: var(--accent);
-      color: #0d0d0f !important;
+      color: var(--on-accent) !important;
       font-weight: 500 !important;
       padding: 7px 18px;
       border-radius: 50px;
       transition: opacity 0.2s !important;
     }
-    .nav-cta:hover { opacity: 0.85; color: #0d0d0f !important; }
+    .nav-cta:hover { opacity: 0.85; color: var(--on-accent) !important; }
 
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
@@ -209,16 +242,16 @@
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: var(--accent);
-      color: #0d0d0f;
-      box-shadow: 0 0 30px rgba(200,240,96,0.2);
+      color: var(--on-accent);
+      box-shadow: 0 0 30px rgba(var(--accent-rgb),0.2);
     }
-    .btn-primary:hover { box-shadow: 0 0 40px rgba(200,240,96,0.35); }
+    .btn-primary:hover { box-shadow: 0 0 40px rgba(var(--accent-rgb),0.35); }
     .btn-outline {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
     }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.25); background: var(--bg3); }
+    .btn-outline:hover { border-color: var(--hover-border); background: var(--bg3); }
 
     .stat-num {
       font-family: var(--serif);
@@ -250,13 +283,13 @@
       position: relative;
       overflow: hidden;
     }
-    .avatar-card:hover { border-color: rgba(200,240,96,0.3); }
+    .avatar-card:hover { border-color: rgba(var(--accent-rgb),0.3); }
     .avatar-card::before {
       content: '';
       position: absolute;
       top: -80px; right: -80px;
       width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(200,240,96,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(var(--accent-rgb),0.12) 0%, transparent 70%);
       pointer-events: none;
     }
     .avatar-img {
@@ -295,7 +328,7 @@
       border: 1px solid var(--border);
       color: var(--muted);
     }
-    .chip.active { background: rgba(200,240,96,0.12); border-color: rgba(200,240,96,0.35); color: var(--accent); }
+    .chip.active { background: rgba(var(--accent-rgb),0.12); border-color: rgba(var(--accent-rgb),0.35); color: var(--accent); }
 
     /* ── About ── */
     #about { padding: 7rem 0; }
@@ -340,7 +373,7 @@
       padding: 1.75rem;
       transition: border-color 0.25s, transform 0.25s;
     }
-    .skill-card:hover { border-color: rgba(200,240,96,0.3); }
+    .skill-card:hover { border-color: rgba(var(--accent-rgb),0.3); }
     .skill-icon {
       width: 44px; height: 44px;
       background: var(--bg3);
@@ -386,7 +419,7 @@
       flex-direction: column;
       transition: border-color 0.25s, transform 0.25s;
     }
-    .project-card:hover { border-color: rgba(200,240,96,0.25); }
+    .project-card:hover { border-color: rgba(var(--accent-rgb),0.25); }
     .project-thumb {
       aspect-ratio: 16/9;
       background: var(--bg3);
@@ -412,8 +445,8 @@
       background: rgba(13, 13, 15, 0.3);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      border: 1px solid var(--accent);
-      color: var(--accent);
+      border: 1px solid #c8f060;
+      color: #c8f060;
     }
     .project-thumb img {
       width: 100%;
@@ -494,7 +527,7 @@
       position: absolute;
       left: calc(200px + 1rem - 5px);   /* left edge of dot */
       top: 0.65rem;
-      box-shadow: 0 0 12px rgba(200,240,96,0.5);
+      box-shadow: 0 0 12px rgba(var(--accent-rgb),0.5);
       z-index: 1;
     }
     .timeline-body { padding-left: 2rem; }
@@ -540,7 +573,7 @@
       border-radius: var(--radius);
       transition: border-color 0.2s, background 0.2s;
     }
-    .contact-link:hover { border-color: rgba(200,240,96,0.35); background: var(--bg2); }
+    .contact-link:hover { border-color: rgba(var(--accent-rgb),0.35); background: var(--bg2); }
     .contact-link-icon {
       width: 36px; height: 36px;
       background: var(--bg3);
@@ -569,7 +602,7 @@
       transition: border-color 0.2s;
       width: 100%;
     }
-    .form-input:focus, .form-textarea:focus { border-color: rgba(200,240,96,0.5); }
+    .form-input:focus, .form-textarea:focus { border-color: rgba(var(--accent-rgb),0.5); }
     .form-textarea { resize: vertical; min-height: 140px; }
     .form-input::placeholder, .form-textarea::placeholder { color: rgba(136,136,144,0.6); }
 
@@ -597,10 +630,46 @@
       z-index: 0;
       border-radius: 50%;
       filter: blur(80px);
-      opacity: 0.06;
+      opacity: var(--glow-opacity);
     }
-    .bg-glow-1 { width: 500px; height: 500px; background: #c8f060; top: -100px; right: -100px; }
-    .bg-glow-2 { width: 400px; height: 400px; background: #c8f060; bottom: 20%; left: -150px; }
+    .bg-glow-1 { width: 500px; height: 500px; background: rgb(var(--accent-rgb)); top: -100px; right: -100px; }
+    .bg-glow-2 { width: 400px; height: 400px; background: rgb(var(--accent-rgb)); bottom: 20%; left: -150px; }
+
+    /* ── Floating controls (theme toggle + back to top) ── */
+    .fab-group {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 900;
+      display: flex;
+      gap: 0.6rem;
+    }
+    .fab {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s, opacity 0.3s, visibility 0.3s;
+    }
+    .fab:hover { border-color: rgba(var(--accent-rgb), 0.5); color: var(--accent); transform: translateY(-2px); }
+    .fab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .fab svg { width: 18px; height: 18px; }
+
+    /* Theme icon: shows the mode you'll switch TO */
+    .fab .icon-moon { display: none; }
+    :root[data-theme="light"] .fab .icon-sun  { display: none; }
+    :root[data-theme="light"] .fab .icon-moon { display: block; }
+
+    /* Back-to-top fades in after scrolling */
+    .to-top { opacity: 0; visibility: hidden; transform: translateY(8px); pointer-events: none; }
+    .to-top.visible { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
+    .to-top.visible:hover { transform: translateY(-2px); }
 
     /* ── Animations ── */
     @keyframes fadeUp {
@@ -750,7 +819,7 @@
           </div>
           <div class="detail-row">
             <span class="detail-key">Email</span>
-            <span class="detail-val"><a href="mailto:hello@joshuabyrnes.au" style="color: var(--accent);">hello@joshuabyrnes.au</a></span>
+            <span class="detail-val"><a href="#contact" data-obf-email data-obf-text style="color: var(--accent);">hello [at] joshuabyrnes [dot] au</a></span>
           </div>
           <div class="detail-row">
             <span class="detail-key">Education</span>
@@ -1183,24 +1252,14 @@
             Whether you have a project in mind or just want to find out more about me, drop a line.
           </p>
           <div class="contact-links">
-            <a href="mailto:hello@joshuabyrnes.au" class="contact-link">
+            <a href="#contact" class="contact-link" data-obf-email>
               <div class="contact-link-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="var(--accent)">
                   <path d="M22.4,32h-6.4c-2.16,0-4.25-.42-6.23-1.26-1.91-.81-3.62-1.96-5.09-3.43-1.47-1.47-2.62-3.18-3.43-5.09-.83-1.97-1.26-4.07-1.26-6.23s.42-4.25,1.26-6.23c.81-1.91,1.96-3.62,3.43-5.09,1.47-1.47,3.18-2.62,5.09-3.43,1.97-.83,4.07-1.26,6.23-1.26s4.25.42,6.23,1.26c1.91.81,3.62,1.96,5.09,3.43,1.47,1.47,2.62,3.18,3.43,5.09.83,1.97,1.26,4.07,1.26,6.23v2.4c0,3.09-2.51,5.6-5.6,5.6-1.92,0-3.63-.98-4.63-2.46-1.46,1.52-3.5,2.46-5.77,2.46-4.41,0-8-3.59-8-8s3.59-8,8-8,8,3.59,8,8v2.4c0,1.32,1.08,2.4,2.4,2.4s2.4-1.08,2.4-2.4v-2.4c0-3.42-1.33-6.63-3.75-9.05-2.42-2.42-5.63-3.75-9.05-3.75s-6.63,1.33-9.05,3.75c-2.42,2.42-3.75,5.63-3.75,9.05s1.33,6.63,3.75,9.05c2.42,2.42,5.63,3.75,9.05,3.75h6.4c.88,0,1.6.72,1.6,1.6s-.72,1.6-1.6,1.6ZM16,11.2c-2.65,0-4.8,2.15-4.8,4.8s2.15,4.8,4.8,4.8,4.8-2.15,4.8-4.8-2.15-4.8-4.8-4.8Z"/>
                 </svg></div>
               <div>
                 <span class="contact-link-label">Email</span>
-                <span class="contact-link-value">hello@joshuabyrnes.au</span>
-              </div>
-            </a>
-            <a href="https://www.linkedin.com/in/joshua-byrnes-593125405/" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="var(--accent)">
-                  <path d="M28.44,0H3.56C1.59,0,0,1.59,0,3.56v24.89c0,1.96,1.59,3.56,3.56,3.56h24.89c1.96,0,3.56-1.59,3.56-3.56V3.56c0-1.96-1.59-3.56-3.56-3.56ZM9.68,27.56h-4.77v-15.41h4.77v15.41ZM7.27,10.13c-1.56,0-2.82-1.27-2.82-2.84s1.26-2.84,2.82-2.84,2.82,1.27,2.82,2.84-1.26,2.84-2.82,2.84ZM27.56,27.56h-4.75v-8.09c0-2.22-.84-3.46-2.6-3.46-1.91,0-2.91,1.29-2.91,3.46v8.09h-4.58v-15.41h4.58v2.08s1.38-2.55,4.65-2.55,5.61,2,5.61,6.12v9.76Z"/>
-              </div>
-              <div>
-                <span class="contact-link-label">LinkedIn</span>
-                <span class="contact-link-value">Joshua Byrnes | Educational Technologist</span>
+                <span class="contact-link-value" data-obf-text>hello [at] joshuabyrnes [dot] au</span>
               </div>
             </a>
             <a href="https://au.seek.com/profiles/joshua-byrnes-FTd26Mcr18" target="_blank" rel="noopener" class="contact-link">
@@ -1245,11 +1304,32 @@
   <footer>
     <p>© Joshua Byrnes.</p>
     <div class="footer-links">
-      <a href="https://www.linkedin.com/in/joshua-byrnes-593125405/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://au.seek.com/profiles/joshua-byrnes-FTd26Mcr18/" target="_blank" rel="noopener">Seek</a>
-      <a href="mailto:hello@joshuabyrnes.au">Email</a>
+      <a href="#contact" data-obf-email>Email</a>
     </div>
   </footer>
+
+  <!-- ── FLOATING CONTROLS ── -->
+  <div class="fab-group">
+    <button type="button" class="fab to-top" id="toTop" aria-label="Back to top" title="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="12" y1="19" x2="12" y2="5"/>
+        <polyline points="5 12 12 5 19 12"/>
+      </svg>
+    </button>
+    <button type="button" class="fab" id="themeToggle" aria-label="Switch to light mode" title="Switch to light mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+        <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+        <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+        <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </div>
 
   <script>
     // ── Progress bar ──
@@ -1267,6 +1347,9 @@
 
       let W, H;
       const SPACING = 30;
+      const readAccent = () => getComputedStyle(document.documentElement).getPropertyValue('--accent-rgb').trim();
+      let accentRGB = readAccent();
+      document.addEventListener('themechange', () => { accentRGB = readAccent(); });
 
       function resize() {
         W = canvas.width  = window.innerWidth;
@@ -1289,7 +1372,7 @@
 
             ctx.beginPath();
             ctx.arc(x, y, 1, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(200,240,96,${alpha})`;
+            ctx.fillStyle = `rgba(${accentRGB},${alpha})`;
             ctx.fill();
           }
         }
@@ -1315,7 +1398,7 @@
           const rotX = -((y - rect.height / 2) / (rect.height / 2)) * 2;
           const rotY =  ((x - rect.width  / 2) / (rect.width  / 2)) * 2;
           card.style.transform = `perspective(700px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
-          shine.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.07) 0%, transparent 65%)`;
+          shine.style.background = `radial-gradient(circle at ${x}px ${y}px, var(--shine) 0%, transparent 65%)`;
         });
 
         card.addEventListener('mouseleave', () => {
@@ -1325,6 +1408,63 @@
           shine.style.background = 'none';
         });
       });
+    })();
+
+    // ── Theme toggle ──
+    (function () {
+      const root = document.documentElement;
+      const btn  = document.getElementById('themeToggle');
+      const current = () => root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+
+      function syncLabel() {
+        const label = 'Switch to ' + (current() === 'dark' ? 'light' : 'dark') + ' mode';
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('title', label);
+      }
+
+      btn.addEventListener('click', () => {
+        const next = current() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        syncLabel();
+        document.dispatchEvent(new Event('themechange'));
+      });
+      syncLabel();
+    })();
+
+    // ── Back to top ──
+    (function () {
+      const btn = document.getElementById('toTop');
+      const SHOW_AFTER = 300; // px scrolled before the button appears
+      const update = () => btn.classList.toggle('visible', window.scrollY > SHOW_AFTER);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // ── Email: assembled in the browser, only after genuine user interaction ──
+    (function () {
+      const encoded = 'aGVsbG9Aam9zaHVhYnlybmVzLmF1';
+      let revealed = false, origin = null;
+
+      function reveal() {
+        if (revealed) return;
+        revealed = true;
+        window.removeEventListener('pointermove', onMove);
+        ['pointerdown', 'touchstart', 'keydown'].forEach(ev => window.removeEventListener(ev, reveal));
+        const addr = atob(encoded);
+        document.querySelectorAll('[data-obf-email]').forEach(el => { el.href = 'mailto:' + addr; });
+        document.querySelectorAll('[data-obf-text]').forEach(el => { el.textContent = addr; });
+      }
+
+      // Browsers fire one synthetic pointermove on page load, so require the pointer to actually travel
+      function onMove(e) {
+        if (!origin) { origin = [e.clientX, e.clientY]; return; }
+        if (Math.hypot(e.clientX - origin[0], e.clientY - origin[1]) > 20) reveal();
+      }
+
+      window.addEventListener('pointermove', onMove, { passive: true });
+      ['pointerdown', 'touchstart', 'keydown'].forEach(ev => window.addEventListener(ev, reveal, { passive: true }));
     })();
 
     // ── Mobile nav ──
